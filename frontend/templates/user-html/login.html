@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>MFinance</title>
+  <meta name="theme-color" content="#fff" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+
+<body>
+  <div class="form-page">
+    <div class="popup-block" id="log-popup">
+      <div class="popup-block__overlay">
+        <div class="popup-block__popup form-popup">
+          <div class="inner-content">
+            <h4 class="title">
+              Hi There! 👋
+            </h4>
+            <p>Welcome back, Log in to your account</p>
+            <div class="form-popup__form">
+              <form action="#" class="form-validate" method="POST">
+                  {% csrf_token %}
+                  {{ form.as_p}}
+                <div class="info-text">
+                  Don’t have an account?
+                  <a href="{% url 'register' %}">
+                    Sign Up
+                  </a>
+                </div>
+                <button type="submit" class="button light">
+                  Log In
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="{% static 'js/vendor.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
