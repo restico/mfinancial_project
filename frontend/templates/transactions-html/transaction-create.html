@@ -1,14 +1,81 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Create</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>MFinance</title>
+    <meta name="theme-color" content="#fff" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <style>
+        .dashboard__create {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+
+        .dashboard__create form {
+            width: 300px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard__create h3 {
+            color: black;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .dashboard__create label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .dashboard__create select,
+        .dashboard__create input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 15px;
+        }
+
+        .dashboard__create button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            background-color: #4CAF50;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        #categ {
+            color: black;
+        }
+        #status {
+            color: black;
+        }
+        #amount {
+            color: black;
+        }
+    </style>
 </head>
 <body>
-  <form method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Create</button>
-  </form>
+    <div class="dashboard__create">
+        <h3>Create transaction</h3>
+        <form method='POST'>
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit">Create</button>
+        </form>
+    </div>
 </body>
 </html>

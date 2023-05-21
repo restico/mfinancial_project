@@ -38,174 +38,9 @@
       <div class="dashboard__row">
         <div class="dashboard__transactions">
           <div class="dashboard__transactions-top">
-            <h3>Transactions</h3>
-            <ul>
-              <li class="active">
-                <a href="#">Today</a>
-              </li>
-              <li>
-                <a href="#">Last week</a>
-              </li>
-              <li>
-                <a href="#">Last month</a>
-              </li>
-              <li>
-                <a href="#">Last year</a>
-              </li>
-              <li>
-                <a href="#">All</a>
-              </li>
-            </ul>
-          </div>
-          <div class="dashboard__circle">
-          </div>
-          <div class="dashboard__transactions-list">
-            <ul>
-              <li class="health">
-                <div class="circle">
-                </div>
-                <p>
-                  Health
-                </p>
-                <div class="value">
-                  $ 2500.8
-                </div>
-              </li>
-              <li class="health">
-                <div class="circle">
-                </div>
-                <p>
-                  Health
-                </p>
-                <div class="value">
-                  $ 2500.8
-                </div>
-              </li>
-              <li class="health">
-                <div class="circle">
-                </div>
-                <p>
-                  Health
-                </p>
-                <div class="value">
-                  $ 2500.8
-                </div>
-              </li>
-              <li class="health">
-                <div class="circle">
-                </div>
-                <p>
-                  Health
-                </p>
-                <div class="value">
-                  $ 2500.8
-                </div>
-              </li>
-              <li class="health">
-                <div class="circle">
-                </div>
-                <p>
-                  Health
-                </p>
-                <div class="value">
-                  $ 2500.8
-                </div>
-              </li>
-              <li class="health">
-                <div class="circle">
-                </div>
-                <p>
-                  Health
-                </p>
-                <div class="value">
-                  $ 2500.8
-                </div>
-              </li>
-              <li class="health">
-                <div class="circle">
-                </div>
-                <p>
-                  Health
-                </p>
-                <div class="value">
-                  $ 2500.8
-                </div>
-              </li>
-              <li class="health">
-                <div class="circle">
-                </div>
-                <p>
-                  Health
-                </p>
-                <div class="value">
-                  $ 2500.8
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="dashboard__side">
-          <div class="dashboard__side-cards">
-            <div class="values-card">
-              <div class="values-card__top">
-                <h3>
-                  Credit
-                </h3>
-                <div class="add-button">
-                  <a href="#">
-                    <img src="{% static 'img/plus-icon.svg' %}" alt="icon">
-                  </a>
-                </div>
-              </div>
-              <div class="values-card__value red">
-                <h3>$ -1460.00</h3>
-                <p>
-                  2.7%
-                </p>
-              </div>
-              <div class="values-card__bottom-text">
-                You must pay $9940 this month
-              </div>
-            </div>
-            <div class="values-card">
-              <div class="values-card__top">
-                <h3>
-                  Deposit
-                </h3>
-                <div class="add-button">
-                  <a href="#">
-                    <img src="{% static 'img/plus-icon.svg' %}" alt="icon">
-                  </a>
-                </div>
-              </div>
-              <div class="values-card__value green">
-                <h3>$ 5660.00</h3>
-                <p>
-                  2.5%
-                </p>
-              </div>
-              <div class="values-card__bottom-text">
-                Income this month $1999.00
-              </div>
-            </div>
-          </div>
-          <div class="dashboard__create">
-            <h4>Create transaction</h4>
-            <form action="#">
-              <button type="submit" class="button">
-                Create
-              </button>
-            </form>
-          </div>
-          <div class="dashboard__side-transactions">
-            <div class="dashboard__side-transactions-top">
-              <h4>
+              <h1>
                 Transaction
-              </h4>
-              <a href="#" class="filter-button">
-                <img src="{% static 'img/filter-icon.svg' %}" alt="icon">
-                Filter
-              </a>
+              </h1>
             </div>
             <div class="transactions-table">
               <table>
@@ -227,71 +62,187 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  {% for el in transactions %}
+                    <tr>
                     <td class="">
-                      Accrual
+                        {{el.category}}
                     </td>
                     <td>
-                      $ 35.44
+                      $ {{el.amount}}
                     </td>
                     <td class="expence">
-                      Income
+                      {{el.status}}
                     </td>
                     <td>
-                      15.06.2023
+                      {{el.date}}
                     </td>
                     <td>
-                      <a href="#">
+                      <a href="{% url 'transaction_delete' el.pk %}">
                         Delete
                       </a>
                     </td>
                   </tr>
-                  <tr>
-                    <td class="">
-                      Accrual
-                    </td>
-                    <td>
-                      $ 35.44
-                    </td>
-                    <td class="income">
-                      Income
-                    </td>
-                    <td>
-                      15.06.2023
-                    </td>
-                    <td>
-                      <a href="#">
-                        Delete
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="">
-                      Accrual
-                    </td>
-                    <td>
-                      $ 35.44
-                    </td>
-                    <td class="income">
-                      Income
-                    </td>
-                    <td>
-                      15.06.2023
-                    </td>
-                    <td>
-                      <a href="#">
-                        Delete
-                      </a>
-                    </td>
-                  </tr>
+                  {% endfor %}
                 </tbody>
               </table>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+        </div>
+
+     <div class="dashboard__row">
+        <div class="dashboard__transactions">
+          <div class="dashboard__transactions-top">
+              <h1>
+                Credit
+              </h1>
+            </div>
+            <div class="transactions-table">
+              <table>
+            <thead>
+              <tr>
+                <td width="17%">Name</td>
+                    <td width="17%">
+                      Percent
+                    </td>
+                    <td width="17%">
+                      Credit length
+                    </td>
+                    <td width="10%">
+                      Ur paid
+                    </td>
+                    <td width="10%">
+                      Amount
+                    </td>
+                    <td width="10%">
+                      Actions
+                    </td>
+                  </tr>
+            </thead>
+                <tbody>
+                  {% for credit, payment in credits %}
+                    {% if not credit %}
+                        <h1>Create credit</h1>
+                    {% else %}
+
+                    {% endif %}
+                    <tr>
+                    <td class="">
+                        {{credit.name}}
+                    </td>
+                    <td>
+                        {{credit.percent }} %
+                    </td>
+                    <td class="expence">
+                      {{credit.credit_length}} month
+                    </td>
+                    <td>
+                      {{credit.payed_times}}
+                    </td>
+                    <td>
+                      {{ credit.amount }} $
+                    </td>
+                    <td>
+                      <form method="POST" action="{% url 'increase_payed_times' credit.pk %}">
+                        {% csrf_token %}
+                        <button type="submit">Pay</button>
+                      </form>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+          </table>
+            </div>
+          </div>
+        </div>
+
+      <div class="dashboard__row">
+        <div class="dashboard__transactions">
+          <div class="dashboard__transactions-top">
+              <h1>
+                Deposits
+              </h1>
+            </div>
+            <div class="transactions-table">
+              <table>
+            <thead>
+              <tr>
+                <td width="17%">Name</td>
+                    <td width="17%">
+                      Percent
+                    </td>
+                    <td width="17%">
+                      Deposit length
+                    </td>
+                    <td width="10%">
+                      Get times
+                    </td>
+                    <td width="10%">
+                      Amount
+                    </td>
+                    <td width="10%">
+                      Actions
+                    </td>
+                  </tr>
+            </thead>
+                <tbody>
+                  {% for deposit, payment in deposits %}
+                    <tr>
+                    <td class="">
+                        {{deposit.name}}
+                    </td>
+                    <td>
+                        {{deposit.percent }} %
+                    </td>
+                    <td class="expence">
+                      {{deposit.deposit_length}} month
+                    </td>
+                    <td>
+                      {{deposit.payed_times}}
+                    </td>
+                    <td>
+                      {{ deposit.amount }} $
+                    </td>
+                    <td>
+                      <form method="POST" action="{% url 'get_deposits' deposit.pk %}">
+                        {% csrf_token %}
+                        <button type="submit">Get</button>
+                      </form>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+          </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard__create">
+            <h4>Create transactions</h4>
+            <form action="{% url 'create-transactions' %}">
+              <button type="submit" class="button">
+                Create
+              </button>
+            </form>
+          </div>
+    <div class="dashboard__create">
+            <h4>Create credit</h4>
+            <form action="{% url 'create-credits' %}">
+              <button type="submit" class="button">
+                Create
+              </button>
+            </form>
+          </div>
+    <div class="dashboard__create">
+            <h4>Create deposit</h4>
+            <form action="{% url 'create-deposits' %}">
+              <button type="submit" class="button">
+                Create
+              </button>
+            </form>
+          </div>
   </main>
+
   <script src="{% static 'js/vendor.js' %}"></script>
   <script src="{% static 'js/main.js' %}"></script>
 </body>
