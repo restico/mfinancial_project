@@ -1,5 +1,5 @@
 from django.contrib.auth import logout
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy, reverse
 from django.views.generic import DetailView, CreateView
@@ -17,7 +17,7 @@ class UserLoginView(LoginView):
     template_name = 'user-html/login.html'
 
     def get_success_url(self):
-        return reverse_lazy('home_page')
+        return reverse('profile', args=[self.request.user.pk])
 
 
 class CreateProfileView(CreateView):
@@ -26,7 +26,7 @@ class CreateProfileView(CreateView):
     template_name = 'user-html/register.html'
 
     def get_success_url(self):
-        return reverse_lazy('home_page')
+        return reverse_lazy('login')
 
 
 def logoutUser(request):
